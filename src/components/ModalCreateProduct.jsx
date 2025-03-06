@@ -1,6 +1,6 @@
 import { useState } from "react"
-import { Form } from "../Form";
-import { Button } from "../ui/button";
+import { Form } from "./Form";
+import { Button } from "./ui/button";
 import {
   Dialog,
   DialogContent,
@@ -9,9 +9,9 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from "../ui/dialog";
+} from "./ui/dialog";
 
-export function ModalCreateProduct({ areas, brands }) {
+export function ModalCreateProduct({ areas, brands, addProduct }) {
   const [newProduct, setNewProduct] = useState({
     name: "",
     price: "",
@@ -22,10 +22,27 @@ export function ModalCreateProduct({ areas, brands }) {
 
   const handleChange = (e, value) => {
     const name = e.target?.name || e;
-    const newValue = value || e.target.value;
+    let newValue = value || e.target.value;
+    if(name == "brand"){
+      newValue = brands.find(brand => brand.name === value) || null;
+    } 
     
     setNewProduct((prev) => ({ ...prev, [name]: newValue }));
   };
+
+  function handleCreateNewProduct(event){
+    event.preventDefault();
+
+    addProduct(newProduct);
+    
+    setNewProduct({ 
+      name: "", 
+      price: "", 
+      brand: "", 
+      area: "", 
+      state: "" 
+    });
+  }
 
   return (
     <div className="ml-auto flex items-center gap-2">
@@ -40,11 +57,12 @@ export function ModalCreateProduct({ areas, brands }) {
               Insira as informações do novo produto.
             </DialogDescription>
           </DialogHeader>
-          <form onSubmit={console.log(newProduct)}>
+          <form onSubmit={handleCreateNewProduct}>
             <Form 
               onChange={handleChange} 
               areas={areas} 
               brands={brands}
+              product={newProduct}
             />
             <DialogFooter className="mt-3">
               <Button type="submit">Cadastrar</Button>

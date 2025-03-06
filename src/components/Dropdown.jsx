@@ -17,10 +17,8 @@ import {
   PopoverTrigger,
 } from "@/components/ui/popover";
 
-export function Dropdown({ list, onChange, label }) {
+export function Dropdown({ list, onChange, label, value }) {
   const [open, setOpen] = React.useState(false);
-  const [value, setValue] = React.useState("");
-
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -44,8 +42,7 @@ export function Dropdown({ list, onChange, label }) {
                 <CommandItem
                   key={item}
                   value={item}
-                  onSelect={(currentValue) => {
-                    setValue(currentValue === value ? "" : currentValue);
+                  onSelect={() => {
                     onChange(label, item);
                     setOpen(false);
                   }}
