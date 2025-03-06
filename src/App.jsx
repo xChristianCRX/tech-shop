@@ -30,7 +30,7 @@ export function App() {
 
   return (
     <div>
-      <Header />
+      <Header areas={areas}/>
     </div>
   )
 }
