@@ -30,7 +30,7 @@ export function App() {
 
   return (
     <div>
-      <Header areas={areas}/>
+      <Header areas={areas} brands={ brands.map(brand => brand.name) }/>
     </div>
   )
 }

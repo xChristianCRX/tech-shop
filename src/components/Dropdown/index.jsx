@@ -1,8 +1,8 @@
-import * as React from "react"
-import { Check, ChevronsUpDown } from "lucide-react"
- 
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
+import * as React from "react";
+import { Check, ChevronsUpDown } from "lucide-react";
+
+import { cn } from "@/lib/utils";
+import { Button } from "@/components/ui/button";
 import {
   Command,
   CommandEmpty,
@@ -10,17 +10,16 @@ import {
   CommandInput,
   CommandItem,
   CommandList,
-} from "@/components/ui/command"
+} from "@/components/ui/command";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
+} from "@/components/ui/popover";
 
-export function Dropdown({ list }) {
+export function Dropdown({ list, onChange, label }) {
   const [open, setOpen] = React.useState(false);
   const [value, setValue] = React.useState("");
-  console.log(list)
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -31,9 +30,7 @@ export function Dropdown({ list }) {
           aria-expanded={open}
           className="w-[200px] justify-between"
         >
-          {value
-            ? list.find((item) => item === value)?.label
-            : "Selecione sua opção..."}
+          {value || "Selecione sua opção..."}
           <ChevronsUpDown className="opacity-50" />
         </Button>
       </PopoverTrigger>
@@ -49,6 +46,7 @@ export function Dropdown({ list }) {
                   value={item}
                   onSelect={(currentValue) => {
                     setValue(currentValue === value ? "" : currentValue);
+                    onChange(label, item);
                     setOpen(false);
                   }}
                 >

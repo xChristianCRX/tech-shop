@@ -11,7 +11,7 @@ import {
   DialogTrigger,
 } from "../ui/dialog";
 
-export function ModalCreateProduct({ areas }) {
+export function ModalCreateProduct({ areas, brands }) {
   const [newProduct, setNewProduct] = useState({
     name: "",
     price: "",
@@ -19,8 +19,12 @@ export function ModalCreateProduct({ areas }) {
     area: "",
     state: "",
   });
-  const handleChange = (e) => {
-    setNewProduct({ ...newProduct, [e.target.name]: e.target.value });
+
+  const handleChange = (e, value) => {
+    const name = e.target?.name || e;
+    const newValue = value || e.target.value;
+    
+    setNewProduct((prev) => ({ ...prev, [name]: newValue }));
   };
 
   return (
@@ -36,9 +40,13 @@ export function ModalCreateProduct({ areas }) {
               Insira as informações do novo produto.
             </DialogDescription>
           </DialogHeader>
-          <form>
-            <Form onChange={handleChange} areas={areas}/>
-            <DialogFooter>
+          <form onSubmit={console.log(newProduct)}>
+            <Form 
+              onChange={handleChange} 
+              areas={areas} 
+              brands={brands}
+            />
+            <DialogFooter className="mt-3">
               <Button type="submit">Cadastrar</Button>
             </DialogFooter>
           </form>
