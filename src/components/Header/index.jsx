@@ -8,11 +8,10 @@ import {
     DialogTitle,
     DialogTrigger,
 } from "../ui/dialog";
-import { Label } from "../ui/label"
-import { Input } from "../ui/input"
 
 import logoImg from "../../assets/logo-techshop.svg";
 import styles from "./header.module.css";
+import { Form } from "../Form";
 
 export function Header() {
   return (
@@ -32,30 +31,9 @@ export function Header() {
                   Insira as informações do novo produto.
                 </DialogDescription>
               </DialogHeader>
-              <div className="grid gap-4 py-4">
-                <div className="grid grid-cols-4 items-center gap-4">
-                  <Label htmlFor="name" className="text-right">
-                    Name
-                  </Label>
-                  <Input
-                    id="name"
-                    value="Pedro Duarte"
-                    className="col-span-3"
-                  />
-                </div>
-                <div className="grid grid-cols-4 items-center gap-4">
-                  <Label htmlFor="username" className="text-right">
-                    Username
-                  </Label>
-                  <Input
-                    id="username"
-                    value="@peduarte"
-                    className="col-span-3"
-                  />
-                </div>
-              </div>
+              <Form />
               <DialogFooter>
-                <Button type="submit">Save changes</Button>
+                <Button type="submit">Cadastrar</Button>
               </DialogFooter>
             </DialogContent>
           </Dialog>
