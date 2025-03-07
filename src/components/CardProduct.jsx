@@ -2,13 +2,15 @@ import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "@/componen
 import { Badge } from "@/components/ui/badge";
 
 export function CardProduct({ product }) {
-  // Função para formatar o preço em moeda brasileira
-  const formatPrice = (price) => {
-    return new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-    }).format(price);
-  };
+
+const formatPrice = (price) => {
+  let numericPrice = typeof price === "string" ? parseFloat(price.replace(",", ".")) : price;
+
+  return new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(numericPrice);
+};
 
   return (
     <Card className="w-72 text-center rounded-xl shadow-md border border-gray-200 overflow-hidden transition-transform hover:scale-105">

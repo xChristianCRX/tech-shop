@@ -1,6 +1,8 @@
 import { useState } from "react"
 import { Form } from "./Form";
+
 import { Button } from "./ui/button";
+import { toast } from "sonner";
 import {
   Dialog,
   DialogContent,
@@ -32,6 +34,30 @@ export function ModalCreateProduct({ areas, brands, addProduct }) {
 
   function handleCreateNewProduct(event){
     event.preventDefault();
+    if (newProduct.name.trim() === "") {
+      toast.error("O nome do produto deve ser preenchido!");
+      return;
+    }
+
+    if (newProduct.price.trim() === "") {
+      toast.error("O preço do produto deve ser preenchido!");
+      return;
+    }
+
+    if (newProduct.brand === "") {
+      toast.error("A marca do produto deve ser informada!");
+      return;
+    }
+
+    if (newProduct.area.trim() === "") {
+      toast.error("A seção do produto deve ser informada!");
+      return;
+    }
+
+    if (newProduct.state.trim() === "") {
+      toast.error("O estado do produto deve ser informado!");
+      return;
+    }
 
     addProduct(newProduct);
     
