@@ -1,43 +1,58 @@
 import { useState } from "react";
 import { Toaster } from "./components/ui/sonner";
 import { Header } from "./components/Header";
-import Particles from "./blocks/Backgrounds/Particles/Particles";
 import { Area } from "./components/Area";
+import { Aurora } from "./blocks/Backgrounds/Aurora";
 
 export function App() {
-  const areas = ["Computadores", "Acessórios", "Impressoras", "Games", "Gadgets"];
+  const areas = [
+    "Computadores",
+    "Acessórios",
+    "Impressoras",
+    "Games",
+    "Gadgets",
+  ];
   const brands = [
-    { name: "HP", urlImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/HP_logo_2012.svg/2048px-HP_logo_2012.svg.png" },
-    { name: "Dell", urlImage: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Dell_Logo.svg/2048px-Dell_Logo.svg.png" },
-    { name: "Positivo", urlImage: "https://logodownload.org/wp-content/uploads/2018/09/positivo-logo.png" },
-    { name: "Asus", urlImage: "https://logos-world.net/wp-content/uploads/2020/07/Asus-Logo-1995-present.png" },
-    { name: "Xing Ling", urlImage: "https://pm1.aminoapps.com/6959/02a24e5ccbf19cc8c7b8dde55fc2dc996215d25fr1-287-512v2_uhq.jpg" }
+    {
+      name: "HP",
+      urlImage:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/HP_logo_2012.svg/2048px-HP_logo_2012.svg.png",
+    },
+    {
+      name: "Dell",
+      urlImage:
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Dell_Logo.svg/2048px-Dell_Logo.svg.png",
+    },
+    {
+      name: "Positivo",
+      urlImage:
+        "https://logodownload.org/wp-content/uploads/2018/09/positivo-logo.png",
+    },
+    {
+      name: "Asus",
+      urlImage:
+        "https://logos-world.net/wp-content/uploads/2020/07/Asus-Logo-1995-present.png",
+    },
+    {
+      name: "Xing Ling",
+      urlImage:
+        "https://pm1.aminoapps.com/6959/02a24e5ccbf19cc8c7b8dde55fc2dc996215d25fr1-287-512v2_uhq.jpg",
+    },
   ];
 
   const [products, setProducts] = useState([]);
 
   return (
-    <div className="relative min-h-screen flex flex-col">
-      <div className="absolute inset-0 -z-10">
-        <Particles
-          particleColors={["#000000", "#000000"]}
-          particleCount={1000}
-          particleSpread={10}
-          speed={0.1}
-          particleBaseSize={100}
-          moveParticlesOnHover={true}
-          alphaParticles={false}
-          disableRotation={false}
-        />
-      </div>
-
-      <Toaster position="top-right" richColors />
+    <div>
+      <Toaster position="bottom-right" richColors />
       <Header
         areas={areas}
         brands={brands}
-        addProduct={(newProduct) => setProducts((prev) => [...prev, newProduct])}
+        addProduct={(newProduct) =>
+          setProducts((prev) => [...prev, newProduct])
+        }
       />
-      
+
       <main className="flex-1 p-6">
         {areas.map((area) => (
           <Area

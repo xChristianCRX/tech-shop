@@ -14,6 +14,7 @@ import {
 } from "./ui/dialog";
 
 export function ModalCreateProduct({ areas, brands, addProduct }) {
+  const [isOpen, setIsOpen] = useState(false);
   const [newProduct, setNewProduct] = useState({
     name: "",
     price: "",
@@ -60,6 +61,8 @@ export function ModalCreateProduct({ areas, brands, addProduct }) {
     }
 
     addProduct(newProduct);
+    toast.success("Produto cadastrado com sucesso! 🎉");
+    setIsOpen(false);
     
     setNewProduct({ 
       name: "", 
@@ -72,9 +75,9 @@ export function ModalCreateProduct({ areas, brands, addProduct }) {
 
   return (
     <div className="ml-auto flex items-center gap-2">
-      <Dialog>
+      <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogTrigger asChild>
-          <Button>Cadastrar Produto</Button>
+          <Button onClick={() => setIsOpen(true)}>Cadastrar Produto</Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
