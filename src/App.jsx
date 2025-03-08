@@ -2,7 +2,8 @@ import { useState } from "react";
 import { Toaster } from "./components/ui/sonner";
 import { Header } from "./components/Header";
 import { Area } from "./components/Area";
-import { Aurora } from "./blocks/Backgrounds/Aurora";
+import { ShootingStars } from "./components/ui/shooting-stars";
+import { StarsBackground } from "./components/ui/stars-background";
 
 export function App() {
   const areas = [
@@ -43,7 +44,7 @@ export function App() {
   const [products, setProducts] = useState([]);
 
   return (
-    <div>
+    <div className="bg-neutral-900 h-screen">
       <Toaster position="bottom-right" richColors />
       <Header
         areas={areas}
@@ -62,6 +63,8 @@ export function App() {
           />
         ))}
       </main>
+      <ShootingStars starColor="#FFFFF" className="absolute top-0 left-0 w-full min-h-screen z-0 pointer-events-none" />
+      <StarsBackground className="absolute top-0 left-0 w-full h-full z-0 pointer-events-none" />
     </div>
   );
 }

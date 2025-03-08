@@ -77,7 +77,7 @@ export function ModalCreateProduct({ areas, brands, addProduct }) {
     <div className="ml-auto flex items-center gap-2">
       <Dialog open={isOpen} onOpenChange={setIsOpen}>
         <DialogTrigger asChild>
-          <Button onClick={() => setIsOpen(true)}>Cadastrar Produto</Button>
+          <Button className="bg-black" onClick={() => setIsOpen(true)}>Cadastrar Produto</Button>
         </DialogTrigger>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
