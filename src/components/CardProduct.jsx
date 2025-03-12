@@ -29,7 +29,7 @@ export function CardProduct({ product }) {
         />
       </div>
       <p className="text-base sm:text-xl text-black mt-4 mb-2">
-        {product.brand.name}
+        {product.name}
       </p>
       <CardContent className="px-4">
         <p className="text-xl font-bold text-green-600">
